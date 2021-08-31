@@ -9,7 +9,7 @@ The program can be run from the command line or used as a Python module.
 ## Installation
 
 ```
-python -m pip install https://github.com/ktbaek/SimBa2/archive/master.tar.gz
+python -m pip install https://github.com/ktbaek/SimBa2/archive/main.tar.gz
 ```
 
 ## Usage
