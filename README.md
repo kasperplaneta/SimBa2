@@ -16,7 +16,7 @@ python -m pip install https://github.com/ktbaek/SimBa2/archive/main.tar.gz
 
 ### Run from command line
 
-The program takes a single PDB code or a local PDB file as input, and outputs two .csv files (SimBa-IB_<pdb-code>.csv and SimBa-SYM_<pdb-code>.csv) with predicted ddG values in kcal/mol for a saturated mutagenesis of the protein.
+The program takes a single PDB code or a local PDB file as input, and outputs two .csv files (```SimBa-IB_<pdb-code>.csv``` and ```SimBa-SYM_<pdb-code>.csv```) with predicted ddG values in kcal/mol for a saturated mutagenesis of the protein.
 
 #### Examples
 
