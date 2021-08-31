@@ -1,6 +1,10 @@
 #!/usr/bin/python
 # coding: utf-8
 
+'''
+Copyright (c) 2021 Kristoffer Torbjørn Bæk, Kasper Planeta Kepp, Technical University of Denmark
+'''
+
 import click
 import os
 from Bio.PDB import PDBList
@@ -48,7 +52,7 @@ def main(pdbname, dir, file, keep):
     result['ddG_SimBa-IB'] = result['ddG_SimBa-IB'].round(decimals=1)
     result['ddG_SimBa-SYM'] = result['ddG_SimBa-SYM'].round(decimals=1)
     result['RSA'] = result['RSA'].round(decimals=3)
-    result['Vdiff'] = result['Vdiff'].round(decimals=3)
+    result['Vdiff'] = result['Vdiff'].round(decimals=2)
 
     multi_chain, homo = check_chains(result)
 

@@ -1,3 +1,9 @@
+'''
+Copyright (c) 2021 Kristoffer Torbjørn Bæk, Kasper Planeta Kepp, Technical University of Denmark
+'''
+
+
+
 # Import modules
 import os
 import pandas as pd

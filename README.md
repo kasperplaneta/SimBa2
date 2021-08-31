@@ -52,6 +52,9 @@ from simba2 import methods as sb
 sb.simba2_predict('3BDN', '3bdn.pdb')
 ```
 
+### Protein structure file format
+
+The package so far only works with structures that are available in PDB format, not mmCIF format.
 
 ## Output
 
@@ -62,10 +65,12 @@ The column named 'mean_RSA' shows the mean RSA value across chains if the struct
 The column named 'Gene' shows the chain-assigned gene name as it appears in the header section of the PDB file. This can be useful when analyzing heterooligomeric proteins. Sometimes this column is empty.
 
 ## Citing SimBa2
-SimBa2 can be cited using the following publication:
+Please acknowledge the use of SimBa2 by citing the following publication:
 
 Bæk, K. T. and K. P. Kepp (2021) Dataset and fitting dependencies when estimating protein mutant stability: Towards simple, balanced, interpretable models
+
 Journal: TBA
+
 DOI: TBA
 
 ## Copyright and license
