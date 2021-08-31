@@ -2,7 +2,7 @@
 
 SimBa2 is a Python package for predicting changes in protein stability upon mutation using the prediction methods SimBa-IB and SimBa-SYM. The program retrieves a PDB structure from [RCSB PDB](https://rcsb.org) or takes a local PDB file as input, and outputs the predicted stability changes (in kcal/mol) for all possible single amino acid changes.
 
-Negative ddG values signify destabilizing mutations.
+Negative &Delta;&Delta;G values signify destabilizing mutations.
 
 The program can be run from the command line or used as a Python module.
 
