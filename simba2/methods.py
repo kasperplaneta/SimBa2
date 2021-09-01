@@ -2,8 +2,6 @@
 Copyright (c) 2021 Kristoffer Torbjørn Bæk, Kasper Planeta Kepp, Technical University of Denmark
 '''
 
-
-
 # Import modules
 import os
 import pandas as pd
@@ -176,13 +174,13 @@ def simba2_predict(name, pdb_path):
     df = join_hvdiff(RSA_df)
 
     # Calculate predicted ddG for each residue and each chain
-    df['ddG_SimBa-IB'] = df.apply(lambda row : calc_simba_IB(row['RSA'], row['Vdiff'], row['Hdiff']), axis=1)
-    df['ddG_SimBa-SYM'] = df.apply(lambda row : calc_simba_SYM(row['RSA'], row['Vdiff'], row['Hdiff']), axis=1)
+    df['ddG_SimBa_IB'] = df.apply(lambda row : calc_simba_IB(row['RSA'], row['Vdiff'], row['Hdiff']), axis=1)
+    df['ddG_SimBa_SYM'] = df.apply(lambda row : calc_simba_SYM(row['RSA'], row['Vdiff'], row['Hdiff']), axis=1)
 
     # If structure is a homooligomer, calculate predicted ddG for mean
     if multi_chain and homo:
-        df['ddG_SimBa-IB_mean'] = df.apply(lambda row : calc_simba_IB(row['RSA_mean'], row['Vdiff'], row['Hdiff']), axis=1)
-        df['ddG_SimBa-SYM_mean'] = df.apply(lambda row : calc_simba_SYM(row['RSA_mean'], row['Vdiff'], row['Hdiff']), axis=1)
+        df['ddG_SimBa_IB_mean'] = df.apply(lambda row : calc_simba_IB(row['RSA_mean'], row['Vdiff'], row['Hdiff']), axis=1)
+        df['ddG_SimBa_SYM_mean'] = df.apply(lambda row : calc_simba_SYM(row['RSA_mean'], row['Vdiff'], row['Hdiff']), axis=1)
 
     # Add column with PDB code
     df.insert(loc=0, column='PDB', value=name.upper())

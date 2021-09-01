@@ -49,8 +49,8 @@ def main(pdbname, dir, file, keep):
     print('The structure contains', str(len(result.Chain.unique())),
     'amino acid chain(s).')
 
-    result['ddG_SimBa-IB'] = result['ddG_SimBa-IB'].round(decimals=1)
-    result['ddG_SimBa-SYM'] = result['ddG_SimBa-SYM'].round(decimals=1)
+    result['ddG_SimBa_IB'] = result['ddG_SimBa_IB'].round(decimals=1)
+    result['ddG_SimBa_SYM'] = result['ddG_SimBa_SYM'].round(decimals=1)
     result['RSA'] = result['RSA'].round(decimals=3)
     result['Vdiff'] = result['Vdiff'].round(decimals=2)
 
@@ -58,18 +58,18 @@ def main(pdbname, dir, file, keep):
 
     if multi_chain and homo:
         print('The structure is a homooligomer.')
-        result['ddG_SimBa-IB'] = result['ddG_SimBa-IB_mean'].round(decimals=1)
-        result['ddG_SimBa-SYM'] = result['ddG_SimBa-SYM_mean'].round(decimals=1)
+        result['ddG_SimBa_IB'] = result['ddG_SimBa_IB_mean'].round(decimals=1)
+        result['ddG_SimBa_SYM'] = result['ddG_SimBa_SYM_mean'].round(decimals=1)
         result['RSA_mean'] = result['RSA_mean'].round(decimals=3)
-        result = result.drop(columns = ['ddG_SimBa-IB_mean', 'ddG_SimBa-SYM_mean'])
+        result = result.drop(columns = ['ddG_SimBa_IB_mean', 'ddG_SimBa_SYM_mean'])
 
     elif multi_chain:
         print('The structure is a heterooligomer.')
 
     outputfile1 = 'SimBa-IB_' + name.upper()
     outputfile2 = 'SimBa-SYM_' + name.upper()
-    result.drop(columns = 'ddG_SimBa-SYM').to_csv(os.path.join(os.getcwd(), outputfile1 + '.csv'), index=False)
-    result.drop(columns = 'ddG_SimBa-IB').to_csv(os.path.join(os.getcwd(), outputfile2 + '.csv'), index=False)
+    result.drop(columns = 'ddG_SimBa_SYM').to_csv(os.path.join(os.getcwd(), outputfile1 + '.csv'), index=False)
+    result.drop(columns = 'ddG_SimBa_IB').to_csv(os.path.join(os.getcwd(), outputfile2 + '.csv'), index=False)
 
 if __name__ == "__main__": # if script is being invoked from command line
     main()
