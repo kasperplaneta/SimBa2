@@ -87,11 +87,11 @@ def get_residueAreas(result):
 
 def calc_simba_IB(RSA, Vdiff, Hdiff):
     '''Calculates predicted ddG based on Simba-IB.'''
-    ddG = (-0.691
-    + 0.904 * RSA
-    + 1.423 * Vdiff
+    ddG = (-0.692
+    + 0.905 * RSA
+    + 1.425 * Vdiff
     - 0.365 * Hdiff
-    - 1.486 * RSA * Vdiff
+    - 1.494 * RSA * Vdiff
     + 0.625 * RSA * Hdiff)
 
     return ddG
@@ -99,10 +99,10 @@ def calc_simba_IB(RSA, Vdiff, Hdiff):
 def calc_simba_SYM(RSA, Vdiff, Hdiff):
     '''Calculates predicted ddG based on Simba-SYM.'''
     ddG = (
-    + 1.622 * Vdiff
-    - 0.423 * Hdiff
-    - 1.866 * RSA * Vdiff
-    + 0.740 * RSA * Hdiff)
+    + 1.642 * Vdiff
+    - 0.421 * Hdiff
+    - 1.867 * RSA * Vdiff
+    + 0.737 * RSA * Hdiff)
 
     return ddG
 
