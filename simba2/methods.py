@@ -7,6 +7,7 @@ import os
 import pandas as pd
 import freesasa as fs
 from Bio.PDB import PDBParser
+from Bio import SeqIO
 import pkg_resources
 import json
 from natsort import natsort_keygen
@@ -106,15 +107,16 @@ def calc_simba_SYM(RSA, Vdiff, Hdiff):
 
     return ddG
 
-def check_chains(df):
+def check_chains(filepath):
     '''Checks if PDB is a multi_chain structure and homooligomer.'''
-    def len_unique(inputlist):
-        return len(inputlist.unique())
+    chain_seq = []
+    for chain in SeqIO.parse(filepath, "pdb-seqres"):
+        chain_seq.append(chain.seq)
 
-    multi_chain = len(df.Chain.unique()) != 1
+    chain_seq = [chain for chain in chain_seq if chain != '']
 
-    l = list(df.groupby('Number')['Wild'].agg(len_unique))
-    homo = all(n == 1 for n in l)
+    multi_chain = len(chain_seq) > 1
+    homo = len(set(chain_seq)) == 1
 
     return multi_chain, homo
 
@@ -164,7 +166,7 @@ def simba2_predict(name, pdb_path):
     RSA_df = calc_RSA(pdb_path)
 
     # Test if multichain and homooligomer
-    multi_chain, homo = check_chains(RSA_df)
+    multi_chain, homo = check_chains(pdb_path)
 
     # If structure is a homooligomer, calculate mean RSA
     if multi_chain and homo:

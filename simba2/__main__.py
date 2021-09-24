@@ -37,6 +37,7 @@ def main(pdbname, dir, file, keep):
 
     # Run calculations
     result = simba2_predict(name, pdb_path)
+    multi_chain, homo = check_chains(pdb_path)
 
     # Keep or remove PDB
     if file is None and not already_exists:
@@ -53,8 +54,6 @@ def main(pdbname, dir, file, keep):
     result['ddG_SimBa_SYM'] = result['ddG_SimBa_SYM'].round(decimals=1)
     result['RSA'] = result['RSA'].round(decimals=3)
     result['Vdiff'] = result['Vdiff'].round(decimals=2)
-
-    multi_chain, homo = check_chains(result)
 
     if multi_chain and homo:
         print('The structure is a homooligomer.')

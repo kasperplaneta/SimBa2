@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='SimBa2',
-    version='1.0',
+    version='1.1',
     description='Predicts protein stability changes upon mutation',
     author='Kristoffer T. Bæk',
     author_email='krisb@kemi.dtu.dk',
