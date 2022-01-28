@@ -60,18 +60,12 @@ The package so far only works with structures that are available in PDB format, 
 
 The resulting .csv files (or dataframe when used in a Python script) have mostly self-explanatory column names.
 
-The column named ```mean_RSA``` shows the mean RSA value across chains if the structure is a homooligomer.
-
-The column named ```Gene``` shows the chain-assigned gene name as it appears in the header section of the PDB file. This can be useful when analyzing heterooligomeric proteins. Sometimes this column is empty.
+The column named ```mean_RSA``` shows the mean RSA value across chains if the structure is a homooligomer (this is defined using the sequence in the PDB's SEQRES record. If no SEQRES record is present, ```mean_RSA``` will not calculated, even if the structure is a homooligomer)
 
 ## Citing SimBa2
 Please acknowledge the use of SimBa2 by citing the following publication:
 
-Bæk, K. T. and K. P. Kepp (2021) Dataset and fitting dependencies when estimating protein mutant stability: Towards simple, balanced, interpretable models
-
-Journal: TBA
-
-DOI: TBA
+Bæk, K. T. and K. P. Kepp (2022) Data set and fitting dependencies when estimating protein mutant stability: Toward simple, balanced, and interpretable models. J Comput Chem. https://doi.org/10.1002/jcc.26810
 
 ## Copyright and license
 The MIT License (MIT)

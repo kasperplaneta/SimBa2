@@ -67,8 +67,15 @@ def main(pdbname, dir, file, keep):
 
     outputfile1 = 'SimBa-IB_' + name.upper()
     outputfile2 = 'SimBa-SYM_' + name.upper()
-    result.drop(columns = 'ddG_SimBa_SYM').to_csv(os.path.join(os.getcwd(), outputfile1 + '.csv'), index=False)
-    result.drop(columns = 'ddG_SimBa_IB').to_csv(os.path.join(os.getcwd(), outputfile2 + '.csv'), index=False)
+
+    try:
+        result.drop(columns = 'ddG_SimBa_SYM').to_csv(os.path.join(os.getcwd(), outputfile1 + '.csv'), index=False)
+    except:
+        print('Could not write to file ' + outputfile1 + '.csv. Maybe the file is already open in another application')
+    try:
+        result.drop(columns = 'ddG_SimBa_IB').to_csv(os.path.join(os.getcwd(), outputfile2 + '.csv'), index=False)
+    except:
+        print('Could not write to file ' + outputfile2 + '.csv. Maybe the file is already open in another application')
 
 if __name__ == "__main__": # if script is being invoked from command line
     main()

@@ -143,23 +143,6 @@ def exists_pdb(name, pdb_dir):
 
     return pdb_path, os.path.exists(pdb_path)
 
-def get_gene(name, pdb_path):
-    '''Extracts molecule information from PDB and assigns genes to chains'''
-    parser = PDBParser(QUIET = True)
-    structure = parser.get_structure(name, pdb_path)
-
-    d = {}
-    for molecule, info in structure.header['compound'].items():
-        gene = ''
-        for key, value in structure.header['source'][molecule].items():
-            if key == 'gene':
-                gene = value
-        chains = info['chain'].split(',')
-        for chain in chains:
-            d[chain.upper().strip()] = gene.split(',')[0]
-
-    return pd.DataFrame(list(d.items()),columns = ['Chain','Gene'])
-
 def simba2_predict(name, pdb_path):
     '''Runs all calculations'''
     # Calculate RSA
@@ -186,11 +169,5 @@ def simba2_predict(name, pdb_path):
 
     # Add column with PDB code
     df.insert(loc=0, column='PDB', value=name.upper())
-
-    # Add column with gene name
-    gene_chain_df = get_gene(name, pdb_path)
-    df = df.join(gene_chain_df.set_index('Chain'), on='Chain')
-    col = df.pop("Gene")
-    df.insert(loc=1, column=col.name, value=col)
 
     return df.sort_values(by = ['Chain', 'Number', 'Mutated'], key=natsort_keygen())
