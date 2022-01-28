@@ -60,7 +60,7 @@ The package so far only works with structures that are available in PDB format, 
 
 The resulting .csv files (or dataframe when used in a Python script) have mostly self-explanatory column names.
 
-The column named ```mean_RSA``` shows the mean RSA value across chains if the structure is a homooligomer (this is defined using the sequence in the PDB's SEQRES record. If no SEQRES record is present, ```mean_RSA``` will not calculated, even if the structure is a homooligomer)
+The column named ```mean_RSA``` shows the mean RSA value across chains if the structure is a homooligomer (this is defined using the sequence in the PDB's SEQRES record. If no SEQRES record is present, ```mean_RSA``` will not be calculated, even if the structure is a homooligomer).
 
 ## Citing SimBa2
 Please acknowledge the use of SimBa2 by citing the following publication:
